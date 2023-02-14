@@ -1,7 +1,7 @@
 import express, { Application } from "express"
 import { ErrorHandler } from "./exeptions/erroHandler"
 import ErrorMiddleware from "./middleWares/ErrorMiddleware"
-// import router from "./modules/routes"
+import router from "./module/routes"
 // import dotenv from "dotenv"
 import dataSource from "./config/ormconfig"
 import swagger from "swagger-ui-express"
@@ -18,7 +18,7 @@ const main = () => {
         dataSource
         .initialize()
 
-        // app.use(router)
+        app.use(router)  
         app.use(ErrorMiddleware)
         app.use('/swagger', swagger.serve, swagger.setup(docs))
     } catch (error) {

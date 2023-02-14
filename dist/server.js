@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const erroHandler_1 = require("./exeptions/erroHandler");
 const ErrorMiddleware_1 = __importDefault(require("./middleWares/ErrorMiddleware"));
-// import router from "./modules/routes"
+const routes_1 = __importDefault(require("./module/routes"));
 // import dotenv from "dotenv"
 const ormconfig_1 = __importDefault(require("./config/ormconfig"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
@@ -19,7 +19,7 @@ const main = () => {
         app.use(express_1.default.json());
         ormconfig_1.default
             .initialize();
-        // app.use(router)
+        app.use(routes_1.default);
         app.use(ErrorMiddleware_1.default);
         app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(docs_json_1.default));
     }
