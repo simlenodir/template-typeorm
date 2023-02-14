@@ -14,7 +14,8 @@ const PORT = process.env.PORT || 9090
 const main = () => {
     try {
         app.use(express.json())
-
+        console.log('ok');
+        
         dataSource
         .initialize()
 
